@@ -28,40 +28,54 @@ typedef enum
     CAViewAnimationCurveEaseInOut         // slow at beginning and end
 }CAViewAnimationCurve;
 
+class CC_DLL CAViewAnimationModule : public CAObject
+{
+public:
+
+	std::string                 animationID;
+	void*                       context;
+	float                       duration;
+	float                       delay;
+    float                       repeatCount;
+    bool                        repeatAutoreverses;
+	CAViewAnimationCurve        curve;
+	float                       time;
+	CAMap<CAView*, CAObject*>   animations;
+
+	CAObject*                   willStartTarget;
+	CAObject*                   didStopTarget;
+
+	SEL_CAViewAnimation0        willStartSel0;
+	SEL_CAViewAnimation0        didStopSel0;
+
+	SEL_CAViewAnimation2        willStartSel2;
+	SEL_CAViewAnimation2        didStopSel2;
+
+	CAViewAnimationModule()
+		: willStartTarget(NULL)
+		, didStopTarget(NULL)
+		, willStartSel0(NULL)
+		, didStopSel0(NULL)
+		, willStartSel2(NULL)
+		, didStopSel2(NULL)
+		, animationID("")
+		, context(NULL)
+		, duration(0.2f)
+		, delay(0.0f)
+		, time(0.0f)
+        , repeatCount(1.0f)
+        , repeatAutoreverses(false)
+		, curve(CAViewAnimationCurveLinear)
+	{
+
+	}
+};
+
 class CC_DLL CAViewAnimation: public CAObject
 {
-    struct CAViewAnimationModule
-    {
-        std::string animationID;
-        void* context;
-        float duration;
-        float delay;
-        CAViewAnimationCurve curve;
-        float time;
-        CAMap<CAView*, CAObject*> animations;
-        
-        CAObject* willStartTarget;
-        CAObject* didStopTarget;
-        
-        SEL_CAViewAnimation0 willStartSel0;
-        SEL_CAViewAnimation0 didStopSel0;
-
-        SEL_CAViewAnimation2 willStartSel2;
-        SEL_CAViewAnimation2 didStopSel2;
-        
-        CAViewAnimationModule()
-        :willStartTarget(NULL)
-        ,didStopTarget(NULL)
-        ,willStartSel0(NULL)
-        ,didStopSel0(NULL)
-        ,willStartSel2(NULL)
-        ,didStopSel2(NULL)
-        {}
-    };
-
-    std::deque<CAViewAnimation::CAViewAnimationModule> m_vWillModules;
+    CADeque<CAViewAnimationModule*> m_vWillModules;
     
-    std::vector<CAViewAnimation::CAViewAnimationModule> m_vModules;
+    CAVector<CAViewAnimationModule*> m_vModules;
     
 public:
     
@@ -73,7 +87,11 @@ public:
     
     static void setAnimationDelay(float delay);// default(0)
     
-    static void setAnimationCurve(const CAViewAnimationCurve& curve);// default(CAViewAnimationCurveLinear
+    static void setAnimationCurve(const CAViewAnimationCurve& curve);// default(CAViewAnimationCurveLinear)
+    
+    static void setAnimationRepeatCount(float repeatCount);// default(1.0)
+    
+    static void setAnimationRepeatAutoreverses(bool repeatAutoreverses);// default(false)
     
     static void setAnimationWillStartSelector(CAObject* target, SEL_CAViewAnimation0 selector);
     
@@ -88,6 +106,8 @@ public:
     static bool areAnimationsEnabled();
 
     static bool areBeginAnimations();
+    
+    static bool areBeginAnimationsWithID(const std::string& animationID);
     
 protected:
 

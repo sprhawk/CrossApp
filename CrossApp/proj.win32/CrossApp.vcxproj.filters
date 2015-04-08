@@ -46,9 +46,6 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{163895ae-8a8e-46bf-bdf2-98bb2c1347fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="draw_nodes">
-      <UniqueIdentifier>{1179d205-d065-49f0-8457-bc4c3f1d0cb3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="support\tinyxml2">
       <UniqueIdentifier>{cc25bb83-527d-4218-8d68-ebf963ce7698}</UniqueIdentifier>
     </Filter>
@@ -138,9 +135,6 @@
     <ClCompile Include="..\platform\win32\CCEGLView.cpp">
       <Filter>platform\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\platform\win32\CCImage.cpp">
-      <Filter>platform\win32</Filter>
-    </ClCompile>
     <ClCompile Include="..\platform\win32\CCStdC.cpp">
       <Filter>platform\win32</Filter>
     </ClCompile>
@@ -216,12 +210,6 @@
     <ClCompile Include="..\kazmath\src\GL\matrix.c">
       <Filter>kazmath\src\GL</Filter>
     </ClCompile>
-    <ClCompile Include="..\draw_nodes\CCDrawingPrimitives.cpp">
-      <Filter>draw_nodes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\draw_nodes\CCDrawNode.cpp">
-      <Filter>draw_nodes</Filter>
-    </ClCompile>
     <ClCompile Include="..\shaders\ccGLStateCache.cpp">
       <Filter>shaders</Filter>
     </ClCompile>
@@ -233,12 +221,6 @@
     </ClCompile>
     <ClCompile Include="..\platform\CCFileUtils.cpp">
       <Filter>platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platform\CCImageCommonWebp.cpp">
-      <Filter>platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\platform\win32\CCDevice.cpp">
-      <Filter>platform\win32</Filter>
     </ClCompile>
     <ClCompile Include="..\support\ccUTF8.cpp">
       <Filter>support</Filter>
@@ -449,6 +431,12 @@
     <ClCompile Include="..\platform\CATempTypeFont.cpp">
       <Filter>platform</Filter>
     </ClCompile>
+    <ClCompile Include="..\view\CADrawingPrimitives.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
+    <ClCompile Include="..\view\CADrawView.cpp">
+      <Filter>view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cocoa\CCArray.h">
@@ -500,12 +488,6 @@
       <Filter>platform</Filter>
     </ClInclude>
     <ClInclude Include="..\platform\CCFileUtils.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\platform\CCImage.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\platform\CCImageCommon_cpp.h">
       <Filter>platform</Filter>
     </ClInclude>
     <ClInclude Include="..\platform\CCPlatformConfig.h">
@@ -618,12 +600,6 @@
     </ClInclude>
     <ClInclude Include="..\kazmath\include\kazmath\GL\matrix.h">
       <Filter>kazmath\include\kazmath\GL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\draw_nodes\CCDrawingPrimitives.h">
-      <Filter>draw_nodes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\draw_nodes\CCDrawNode.h">
-      <Filter>draw_nodes</Filter>
     </ClInclude>
     <ClInclude Include="..\shaders\ccGLStateCache.h">
       <Filter>shaders</Filter>
@@ -901,6 +877,12 @@
     </ClInclude>
     <ClInclude Include="..\platform\CATempTypeFont.h">
       <Filter>platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\view\CADrawingPrimitives.h">
+      <Filter>view</Filter>
+    </ClInclude>
+    <ClInclude Include="..\view\CADrawView.h">
+      <Filter>view</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

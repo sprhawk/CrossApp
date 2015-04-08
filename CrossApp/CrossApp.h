@@ -21,15 +21,6 @@
 #include "ccMacros.h"
 #include "ccTypes.h"
 
-// actions
-#include "actions/CCAction.h"
-#include "actions/CCActionInterval.h"
-#include "actions/CCActionCamera.h"
-#include "actions/CCActionManager.h"
-#include "actions/CCActionEase.h"
-#include "actions/CCActionInstant.h"
-#include "actions/CCActionTween.h"
-
 //basics
 #include "basics/CAApplication.h"
 #include "basics/CAAutoreleasePool.h"
@@ -98,6 +89,8 @@
 #include "view/CAPullToRefreshView.h"
 #include "view/CATextView.h"
 #include "view/CAWebView.h"
+#include "view/CADrawingPrimitives.h"
+#include "view/CADrawView.h"
 
 // cocoa
 #include "cocoa/CCDictionary.h"
@@ -106,10 +99,6 @@
 #include "cocoa/CCString.h"
 #include "cocoa/CCNS.h"
 #include "cocoa/CACalendar.h"
-
-// draw nodes
-#include "draw_nodes/CCDrawingPrimitives.h"
-#include "draw_nodes/CCDrawNode.h"
 
 
 // kazmath
@@ -124,7 +113,6 @@
 #include "shaders/CAShaderCache.h"
 #include "shaders/ccShaders.h"
 
-
 // support
 #include "support/ccUtils.h"
 #include "support/ccUTF8.h"
@@ -138,10 +126,8 @@
 #include "support/base64.h"
 
 // platform
-#include "platform/CCDevice.h"
 #include "platform/CCCommon.h"
 #include "platform/CCFileUtils.h"
-#include "platform/CCImage.h"
 #include "platform/CCSAXParser.h"
 #include "platform/platform.h"
 #include "platform/CCPlatformConfig.h"

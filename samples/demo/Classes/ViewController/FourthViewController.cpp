@@ -1,6 +1,7 @@
-#include "FourthViewController.h"
+﻿#include "FourthViewController.h"
 #include "FifthViewController.h"
 
+#pragma execution_character_set("utf-8")
 
 #define CAColor_blueStyle ccc4(51,204,255,255)
 
@@ -37,25 +38,26 @@ void FourthViewController::viewDidLoad()
     defaultLable->setTextAlignment(CATextAlignmentCenter);
     defaultLable->setVerticalTextAlignmet(CAVerticalTextAlignmentCenter);
     defaultView->insertSubview(defaultLable, 10);
-    defaultLable->setText("演示动画1");
+    defaultLable->setText("play animation 1");
     
     animationView1 = CAView::createWithFrame(defaultView->getBounds());
     defaultView->insertSubview(animationView1, 0);
     animationView1->setColor(ccc4(80, 200, 255, 255));
     
+
     animationView2 = CAScale9ImageView::createWithCenter(CADipRect(100, 100, 50, 50));
     animationView2->setImage(CAImage::create("source_material/btn_rounded_normal.png"));
     defaultView->insertSubview(animationView2, 1);
 
     defaultBtnL = CAButton::createWithCenter(CADipRect(60, 50, 100, 60), CAButtonTypeRoundedRect);
-    defaultBtnL->setTitleForState(CAControlStateNormal, "上一个");
+    defaultBtnL->setTitleForState(CAControlStateNormal, "last");
     defaultBtnL->addTarget(this, CAControl_selector(FourthViewController::buttonCallback), CAControlEventTouchUpInSide);
     defaultBtnL->setTag(1);
     defaultView->insertSubview(defaultBtnL, 11);
     defaultBtnL->setVisible(action_index > 0);
     
     defaultBtnR = CAButton::createWithCenter(CADipRect(viewSize.width-60, 40, 100, 60), CAButtonTypeRoundedRect);
-    defaultBtnR->setTitleForState(CAControlStateNormal, "下一个");
+    defaultBtnR->setTitleForState(CAControlStateNormal, "next");
     defaultBtnR->addTarget(this, CAControl_selector(FourthViewController::buttonCallback), CAControlEventTouchUpInSide);
     defaultBtnR->setTag(2);
     defaultView->insertSubview(defaultBtnR, 11);
@@ -101,18 +103,18 @@ void FourthViewController::buttonCallback(CrossApp::CAControl *btn, CrossApp::CC
     if (action_index < 6)
     {
         char str[32];
-        sprintf(str, "演示动画%d", action_index+1);
+        sprintf(str, "play animation %d", action_index+1);
         defaultLable->setText(str);
     }
     else if (action_index < 9)
     {
         char str[32];
-        sprintf(str, "演示动画频率控制%d", action_index+1 - 6);
+        sprintf(str, "play animation %d", action_index+1 - 6);
         defaultLable->setText(str);
     }
     else
     {
-        defaultLable->setText("演示动画延迟执行");
+        defaultLable->setText("play animation delay");
     }
     
     
@@ -124,6 +126,7 @@ void FourthViewController::refreshView(bool animation)
 {
     if (flag)
     {
+        flag = false;
         if (animation)
         {
             switch (action_index)
@@ -173,6 +176,7 @@ void FourthViewController::refreshView(bool animation)
     }
     else
     {
+        flag = true;
         switch (action_index)
         {
             case 0:
@@ -270,24 +274,27 @@ void FourthViewController::refreshView(bool animation)
                 break;
         }
     }
-    flag = !flag;
+    
 }
 
 void FourthViewController::doAction()
 {
     //开始执行动画
-    CAViewAnimation::beginAnimations("Rotation", NULL);
+    CAViewAnimation::beginAnimations("", NULL);
     //动画时长
     CAViewAnimation::setAnimationDuration(1.0f);
     //动画延迟时长执行
     //CAViewAnimation::setAnimationDelay(0.3f);
     //动画波频控制
     CAViewAnimation::setAnimationCurve(CAViewAnimationCurveLinear);
+
+    CAViewAnimation::setAnimationRepeatCount(1.5);
+
+    CAViewAnimation::setAnimationRepeatAutoreverses(true);
     //动画开始前回调(两参数)
     CAViewAnimation::setAnimationWillStartSelector(this, CAViewAnimation2_selector(FourthViewController::willStartAction));
     //动画完成回调(两参数)
     CAViewAnimation::setAnimationDidStopSelector(this, CAViewAnimation2_selector(FourthViewController::didStopAction));
-    
     
     this->refreshView(true);
     

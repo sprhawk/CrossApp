@@ -60,12 +60,12 @@ public:
     
     void setTintColor(const CAColor4B& color);
     
-    void insertSegmentWithTitleAtIndex(const std::string title, int index);
+    void insertSegmentWithTitleAtIndex(const std::string& title, int index);
     void insertSegmentWithImageAtIndex(CAImage* image, int index, CAControlState controlState);
     
     void removeSegmentAtIndex(int index);
     
-    void setTitleForSegmentAtIndex(const std::string title, int index);
+    void setTitleForSegmentAtIndex(const std::string& title, int index);
     std::string getTitleForSegmentAtIndex(int index);
     
     void setImageForSegmentAtIndex(CAImage* image, int index, CAControlState controlState);
@@ -95,16 +95,14 @@ protected:
     virtual void ccTouchCancelled(CATouch *pTouch, CAEvent *pEvent);
     
     void setContentSize(const CCSize & var);
-    
-    void removeAllSegments();
-    
+        
     void createSeparate();
     
     void cleanAllSeparate();
 
     void removeAllSeparateImage();
     
-    void refreshAllSegmentItemBound();
+    void refreshAllSegmentItemBounds();
     
     void refreshAllSegmentItemPosition();
     

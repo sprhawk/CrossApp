@@ -316,7 +316,7 @@ static JSBool js_CrossApp_CAPickerView_setDelegate(JSContext *cx, uint32_t argc,
         
         userDict->setObject(nativeDelegate, "PickerViewDelegate");
         
-        cobj->setDelegate(nativeDelegate);
+        cobj->setPickerViewDelegate(nativeDelegate);
         
         nativeDelegate->release();
         
@@ -852,7 +852,7 @@ static JSBool js_CrossApp_CAPickerView_setDataSource(JSContext *cx, uint32_t arg
         
         userDict->setObject(nativeDataSource, "PickerViewDataSource");
         
-        cobj->setDataSource(nativeDataSource);
+        cobj->setPickerViewDataSource(nativeDataSource);
         
         nativeDataSource->release();
         
